@@ -37,9 +37,18 @@ function App() {
     console.log('transaction:', txl)
   };
 
+  // getCertificate = async () => {
+  //   const signer = await provider.getSigner
+  // }
   // Search button click handler
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    const signer = await provider.getSigner();
+    const instance = new Contract(CertModuleCert, abi, provider);
+
+    const result = await instance.Certificates(searchCertiId);
+
     console.log("Searching Certificate ID:", searchCertiId);
+    console.log("result", result);
   };
 
   return (
